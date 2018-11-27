@@ -1,0 +1,110 @@
+{
+  "kernel": "python",
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "grade": false,
+      "source": "**Recuerde no agregar o quitar celdas en este notebook, ni modificar su tipo. Si lo hace, el sistema automaticamente lo calificar\u00e1 con cero punto cero (0.0)**"
+    },
+    {
+      "cell_type": "markdown",
+      "grade": false,
+      "source": "Use el siguiente conjunto de datos para resolver los problemas propuestos. Use [gradetool](gradetool.md) para verificar las respuestas del notebook."
+    },
+    {
+      "cell_type": "code",
+      "grade": false,
+      "source": "%%writefile data.tsv\nE\t{(b),(g),(f)}\t[jjj#3,bbb#0,ddd#9,ggg#8,hhh#2]\nA\t{(a),(f),(c)}\t[ccc#2,ddd#0,aaa#3,hhh#9]\nB\t{(f),(e),(a),(c)}\t[ddd#2,ggg#5,ccc#6,jjj#1]\nA\t{(a),(b)}\t[hhh#9,iii#5,eee#7,bbb#1]\nC\t{(f),(g),(d),(a)}\t[iii#6,ddd#5,eee#4,jjj#3]\nA\t{(c),(d)}\t[bbb#2,hhh#0,ccc#4,fff#1,aaa#7]\nA\t{(g),(d),(a)}\t[aaa#5,fff#8,ddd#2,iii#0,jjj#7,ccc#1]\nB\t{(b),(a)}\t[fff#3,hhh#1,ddd#2]\nE\t{(d),(e),(a),(f)}\t[eee#4,ccc#5,iii#9,fff#7,ggg#6,bbb#0]\nB\t{(d),(b),(g),(f)}\t[bbb#7,jjj#9,fff#5,iii#4,ggg#2,eee#3]\nC\t{(d),(c),(f),(b)}\t[hhh#6,eee#4,iii#0,fff#2,jjj#1]\nC\t{(d),(e),(a),(c)}\t[bbb#7,iii#6,ggg#9]\nD\t{(g),(e),(f),(b)}\t[bbb#9,aaa#3,ccc#6,fff#4,eee#2]\nE\t{(c),(f)}\t[aaa#8,ddd#5,jjj#1]\nB\t{(d),(b)}\t[ccc#0,jjj#6,fff#7,ddd#3,aaa#2]\nD\t{(f),(e)}\t[ccc#0,eee#6,bbb#9,ddd#3]\nE\t{(e),(b),(f)}\t[bbb#6,iii#3,hhh#5,fff#4,ggg#9,ddd#2]\nD\t{(g),(a)}\t[hhh#4,jjj#5,ccc#9]\nE\t{(e),(c),(f),(a)}\t[ccc#1,iii#6,fff#9]\nE\t{(e),(a)}\t[bbb#9,aaa#3,fff#1]\nE\t{(e),(f)}\t[ddd#9,iii#2,aaa#4]\nE\t{(c),(b),(g)}\t[ccc#5,fff#8,iii#7]\nD\t{(c),(f),(a)}\t[eee#3,jjj#2,ddd#7]\nA\t{(f),(a),(d)}\t[jjj#1,ggg#0,ccc#7,ddd#9,bbb#3]\nE\t{(c),(d)}\t[jjj#6,ccc#0,aaa#1,hhh#9,iii#7,ggg#8]\nE\t{(e),(d),(c)}\t[fff#3,eee#6,iii#4,bbb#7,ddd#0,ccc#1]\nA\t{(a),(e),(f)}\t[fff#0,ddd#5,ccc#4]\nE\t{(c),(a),(g)}\t[ggg#6,hhh#3,ddd#9,ccc#0,jjj#7]\nA\t{(f),(e)}\t[hhh#6,jjj#0,eee#5,iii#7,ccc#3]\nC\t{(f),(c),(a),(g)}\t[eee#1,fff#4,aaa#2,ccc#7,ggg#0,ddd#6]\nA\t{(b),(f)}\t[ccc#6,aaa#9,eee#5,ddd#0,bbb#3]\nD\t{(b),(f)}\t[bbb#7,hhh#1,aaa#6,iii#4,fff#9,ddd#5]\nE\t{(a),(c)}\t[fff#3,ccc#1,ggg#2,eee#5]\nB\t{(b),(f),(c)}\t[iii#7,ggg#3,ddd#0,jjj#8,hhh#5,ccc#1]\nB\t{(f),(a),(e)}\t[hhh#6,ccc#3,jjj#0,bbb#8,ddd#7]\nD\t{(a),(f)}\t[aaa#0,fff#5,ddd#3]\nB\t{(c),(a)}\t[ddd#5,jjj#2,iii#7,ccc#0,bbb#4]\nC\t{(c),(a),(e),(f)}\t[eee#0,fff#2,hhh#6]\nE\t{(e),(d)}\t[fff#9,iii#2,eee#0]\nE\t{(f),(a),(d)}\t[hhh#8,ggg#3,jjj#5]"
+    },
+    {
+      "cell_type": "code",
+      "grade": false,
+      "source": "%load_ext bigdata\n%pig_init"
+    },
+    {
+      "cell_type": "markdown",
+      "grade": false,
+      "source": "# Problema 1\n\nCalcule la cantidad de registros por clave de la columna 3. En otras palabras, cu\u00e1ntos registros hay que tengan la clave `aaa`?"
+    },
+    {
+      "cell_type": "code",
+      "grade": true,
+      "test": false,
+      "execution_count": 3,
+      "points": 5,
+      "source": null,
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "(aaa,13)\n(bbb,16)\n(ccc,23)\n(ddd,23)\n(eee,15)\n(fff,20)\n(ggg,13)\n(hhh,16)\n(iii,18)\n(jjj,18)\n"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "grade": false,
+      "source": "# Problema 2\n\nGenere una tabla que contenga la primera columna, la cantidad de elementos en la columna 2 y la cantidad de elementos en la columna 3"
+    },
+    {
+      "cell_type": "code",
+      "grade": true,
+      "test": false,
+      "execution_count": 4,
+      "points": 5,
+      "source": null,
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "(E,3,5)\n(A,3,4)\n(B,4,4)\n(A,2,4)\n(C,4,4)\n(A,2,5)\n(A,3,6)\n(B,2,3)\n(E,4,6)\n(B,4,6)\n(C,4,5)\n(C,4,3)\n(D,4,5)\n(E,2,3)\n(B,2,5)\n(D,2,4)\n(E,3,6)\n(D,2,3)\n(E,4,3)\n(E,2,3)\n(E,2,3)\n(E,3,3)\n(D,3,3)\n(A,3,5)\n(E,2,6)\n(E,3,6)\n(A,3,3)\n(E,3,5)\n(A,2,5)\n(C,4,6)\n(A,2,5)\n(D,2,6)\n(E,2,4)\n(B,3,6)\n(B,3,5)\n(D,2,3)\n(B,2,5)\n(C,4,3)\n(E,2,3)\n(E,3,3)\n"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "grade": false,
+      "source": "# Problema 3\n\nCompute la cantidad de registros por letra de la columna 2 y clave de al columna 3; esto es, por ejemplo, la cantidad de registros en tienen la letra `b` en la columna 2 y la clave `jjj` en la columna 3 es:\n\n     ((b,jjj), 216)"
+    },
+    {
+      "cell_type": "code",
+      "grade": true,
+      "test": false,
+      "execution_count": 5,
+      "points": 5,
+      "source": null,
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "    \n((a,aaa),5)\n((a,bbb),7)\n((a,ccc),13)\n((a,ddd),13)\n((a,eee),7)\n((a,fff),10)\n((a,ggg),8)\n((a,hhh),8)\n((a,iii),7)\n((a,jjj),10)\n((b,aaa),4)\n((b,bbb),7)\n((b,ccc),5)\n((b,ddd),7)\n((b,eee),5)\n((b,fff),8)\n((b,ggg),4)\n((b,hhh),7)\n((b,iii),7)\n((b,jjj),5)\n((c,aaa),5)\n((c,bbb),4)\n((c,ccc),12)\n((c,ddd),9)\n((c,eee),6)\n((c,fff),8)\n((c,ggg),7)\n((c,hhh),7)\n((c,iii),8)\n((c,jjj),8)\n((d,aaa),4)\n((d,bbb),6)\n((d,ccc),7)\n((d,ddd),5)\n((d,eee),6)\n((d,fff),8)\n((d,ggg),6)\n((d,hhh),4)\n((d,iii),9)\n((d,jjj),8)\n((e,aaa),3)\n((e,bbb),8)\n((e,ccc),9)\n((e,ddd),7)\n((e,eee),7)\n((e,fff),9)\n((e,ggg),4)\n((e,hhh),4)\n((e,iii),8)\n((e,jjj),3)\n((f,aaa),8)\n((f,bbb),10)\n((f,ccc),13)\n((f,ddd),17)\n((f,eee),11)\n((f,fff),11)\n((f,ggg),9)\n((f,hhh),10)\n((f,iii),10)\n((f,jjj),12)\n((g,aaa),3)\n((g,bbb),3)\n((g,ccc),6)\n((g,ddd),5)\n((g,eee),4)\n((g,fff),5)\n((g,ggg),4)\n((g,hhh),3)\n((g,iii),4)\n((g,jjj),6)\n"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "grade": false,
+      "source": "---"
+    },
+    {
+      "cell_type": "code",
+      "grade": false,
+      "source": "!rm data.* pig_*"
+    },
+    {
+      "cell_type": "markdown",
+      "grade": false,
+      "source": "---"
+    },
+    {
+      "cell_type": "markdown",
+      "grade": false,
+      "source": "Para realizar la evaluaci\u00f3n autom\u00e1tica de este libro:\n\n* Abra un Terminal.\n* Asegurece que esat en la misma carpeta que contiene este notebook.\n* Salve el notebook.\n* Ejecute el siguiente comando:\n\n      ./gradetool 06-Evaluacion.ipynb"
+    },
+    {
+      "cell_type": "markdown",
+      "grade": false,
+      "source": "---"
+    }
+  ]
+}

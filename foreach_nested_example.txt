@@ -1,0 +1,4 @@
+tablet	0
+tablet	0
+tablet	0
+tablet	1

@@ -1,0 +1,100 @@
+{
+  "kernel": "python",
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "grade": false,
+      "source": "**Recuerde no agregar o quitar celdas en este notebook, ni modificar su tipo. Si lo hace, el sistema automaticamente lo calificar\u00e1 con cero punto cero (0.0)**"
+    },
+    {
+      "cell_type": "markdown",
+      "grade": false,
+      "source": "Para resolver los problemas presentados, use el siguiente conjunto de datos. Use [gradetool](gradetool.md) para verificar las respuestas del notebook."
+    },
+    {
+      "cell_type": "code",
+      "grade": false,
+      "source": "%%writefile data.tsv\nB\t2017-03-10\t10\nE\t2015-08-02\t11\nB\t2015-09-23\t1\nC\t2015-02-01\t8\nD\t2016-07-03\t4\nD\t2017-08-25\t14\nB\t2017-06-05\t15\nD\t2017-09-27\t13\nB\t2018-06-15\t12\nC\t2017-02-18\t5\nB\t2017-03-09\t2\nD\t2017-11-11\t3\nB\t2017-11-19\t9\nE\t2015-11-28\t6\nD\t2017-11-03\t7"
+    },
+    {
+      "cell_type": "code",
+      "grade": false,
+      "source": "%load_ext bigdata\n%pig_init"
+    },
+    {
+      "cell_type": "markdown",
+      "grade": false,
+      "source": "#\u00a0Problema 1\n\nCalcule la cantidad de registros por letra."
+    },
+    {
+      "cell_type": "code",
+      "grade": true,
+      "test": false,
+      "execution_count": 3,
+      "points": 5,
+      "source": null,
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "(B,6)\n(C,2)\n(D,5)\n(E,2)\n"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "grade": false,
+      "source": "# Problema 2\n\nOrdene la tabla por letra y valor (3ra columna)."
+    },
+    {
+      "cell_type": "code",
+      "grade": true,
+      "test": false,
+      "execution_count": 4,
+      "points": 5,
+      "source": null,
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "(B,2015-09-23,1)\n(B,2017-03-09,2)\n(B,2017-11-19,9)\n(B,2017-03-10,10)\n(B,2018-06-15,12)\n(B,2017-06-05,15)\n(C,2017-02-18,5)\n(C,2015-02-01,8)\n(D,2017-11-11,3)\n(D,2016-07-03,4)\n(D,2017-11-03,7)\n(D,2017-09-27,13)\n(D,2017-08-25,14)\n(E,2015-11-28,6)\n(E,2015-08-02,11)\n"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "grade": false,
+      "source": "# Problema 3\n\nObtenga los cinco registros con los valores m\u00e1s peque\u00f1os en la tercera columna."
+    },
+    {
+      "cell_type": "code",
+      "grade": true,
+      "test": false,
+      "execution_count": 5,
+      "points": 5,
+      "source": null,
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "(1)\n(2)\n(3)\n(4)\n(5)\n"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "grade": false,
+      "source": "---"
+    },
+    {
+      "cell_type": "code",
+      "grade": false,
+      "source": "!rm data.tsv pig_*"
+    },
+    {
+      "cell_type": "markdown",
+      "grade": false,
+      "source": "---"
+    }
+  ]
+}

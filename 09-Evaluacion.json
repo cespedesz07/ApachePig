@@ -1,0 +1,505 @@
+{
+  "kernel": "python",
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "grade": false,
+      "source": "**Recuerde no agregar o quitar celdas en este notebook, ni modificar su tipo. Si lo hace, el sistema automaticamente lo calificar\u00e1 con cero punto cero (0.0)**"
+    },
+    {
+      "cell_type": "markdown",
+      "grade": false,
+      "source": "Use el siguiente conjunto de datos para resolver los problemas propuestos. Use [gradetool](gradetool.md) para verificar las respuestas del notebook."
+    },
+    {
+      "cell_type": "code",
+      "grade": false,
+      "source": "%%writefile data.csv\n1,Vivian,Hamilton,1971-07-08,green,1\n2,Karen,Holcomb,1974-05-23,green,4\n3,Cody,Garrett,1973-04-22,orange,1\n4,Roth,Fry,1975-01-29,black,1\n5,Zoe,Conway,1974-07-03,blue,2\n6,Gretchen,Kinney,1974-10-18,viole,1\n7,Driscoll,Klein,1970-10-05,blue,5\n8,Karyn,Diaz,1969-02-24,red,1\n9,Merritt,Guy,1974-10-17,indigo,4\n10,Kylan,Sexton,1975-02-28,black,4\n11,Jordan,Estes,1969-12-07,indigo,4\n12,Hope,Coffey,1973-12-24,green,5\n13,Vivian,Crane,1970-08-27,gray,5\n14,Clio,Noel,1972-12-12,red,5\n15,Hope,Silva,1970-07-01,blue,5\n16,Ayanna,Jarvis,1974-02-11,orange,5\n17,Chanda,Boyer,1973-04-01,green,4\n18,Chadwick,Knight,1973-04-29,yellow,1"
+    },
+    {
+      "cell_type": "code",
+      "grade": false,
+      "source": "%load_ext bigdata\n%pig_init"
+    },
+    {
+      "cell_type": "code",
+      "grade": false,
+      "source": "%%pig\nu = LOAD 'data.csv' USING PigStorage(',') \n    AS (id:int, \n        firstname:CHARARRAY, \n        surname:CHARARRAY, \n        birthday:CHARARRAY, \n        color:CHARARRAY, \n        quantity:INT);"
+    },
+    {
+      "cell_type": "markdown",
+      "grade": false,
+      "source": "## Pregunta 1\n\nEscriba una consulta en Pig que genere la siguiente salida:\n\n    (Vivian@Hamilton)\n    (Karen@Holcomb)\n    (Cody@Garrett)\n    (Roth@Fry)\n    (Zoe@Conway)\n    (Gretchen@Kinney)\n    (Driscoll@Klein)\n    (Karyn@Diaz)\n    (Merritt@Guy)\n    (Kylan@Sexton)\n    (Jordan@Estes)\n    (Hope@Coffey)\n    (Vivian@Crane)\n    (Clio@Noel)\n    (Hope@Silva)\n    (Ayanna@Jarvis)\n    (Chanda@Boyer)\n    (Chadwick@Knight)"
+    },
+    {
+      "cell_type": "code",
+      "grade": true,
+      "test": false,
+      "execution_count": 4,
+      "points": 5,
+      "source": null,
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "(Vivian@Hamilton)\n(Karen@Holcomb)\n(Cody@Garrett)\n(Roth@Fry)\n(Zoe@Conway)\n(Gretchen@Kinney)\n(Driscoll@Klein)\n(Karyn@Diaz)\n(Merritt@Guy)\n(Kylan@Sexton)\n(Jordan@Estes)\n(Hope@Coffey)\n(Vivian@Crane)\n(Clio@Noel)\n(Hope@Silva)\n(Ayanna@Jarvis)\n(Chanda@Boyer)\n(Chadwick@Knight)\n"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "grade": false,
+      "source": "## Pregunta 2\n\nGenere una relaci\u00f3n con el apellido y su longitud. Ordene por longitud y por apellido. Obtenga la siguiente salida.\n\n    (Hamilton,8)\n    (Garrett,7)\n    (Holcomb,7)\n    (Coffey,6)\n    (Conway,6)"
+    },
+    {
+      "cell_type": "code",
+      "grade": true,
+      "test": false,
+      "execution_count": 5,
+      "points": 5,
+      "source": null,
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "(Hamilton,8)\n(Garrett,7)\n(Holcomb,7)\n(Coffey,6)\n(Conway,6)\n"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "grade": false,
+      "source": "## Pregunta 3\n\nEscriba el c\u00f3digo que genere la siguiente salida.\n\n    (Hamilton,HAMILTON,hamilton)\n    (Holcomb,HOLCOMB,holcomb)\n    (Garrett,GARRETT,garrett)\n    (Fry,FRY,fry)\n    (Conway,CONWAY,conway)"
+    },
+    {
+      "cell_type": "code",
+      "grade": true,
+      "test": false,
+      "execution_count": 6,
+      "points": 5,
+      "source": null,
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "(Hamilton,HAMILTON,hamilton)\n(Holcomb,HOLCOMB,holcomb)\n(Garrett,GARRETT,garrett)\n(Fry,FRY,fry)\n(Conway,CONWAY,conway)\n"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "grade": false,
+      "source": "## Pregunta 4\n\nObtenga los apellidos que empiecen por las letras entre la 'd' y la 'k'. La salida esperada es la siguiente:\n\n    (Hamilton)\n    (Holcomb)\n    (Garrett)\n    (Fry)\n    (Kinney)\n    (Klein)\n    (Diaz)\n    (Guy)\n    (Estes)\n    (Jarvis)\n    (Knight)"
+    },
+    {
+      "cell_type": "code",
+      "grade": true,
+      "test": false,
+      "execution_count": 7,
+      "points": 5,
+      "source": null,
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "(Hamilton)\n(Holcomb)\n(Garrett)\n(Fry)\n(Kinney)\n(Klein)\n(Diaz)\n(Guy)\n(Estes)\n(Jarvis)\n(Knight)\n"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "grade": false,
+      "source": "## Pregunta 5\n\nEscriba el c\u00f3digo equivalente a la siguiente consulta en SQL.\n\n    SELECT\n        color\n    FROM \n        u \n    WHERE \n        color \n    LIKE 'b%';"
+    },
+    {
+      "cell_type": "code",
+      "grade": true,
+      "test": false,
+      "execution_count": 8,
+      "points": 5,
+      "source": null,
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "(black)\n(blue)\n(blue)\n(black)\n(blue)\n"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "grade": false,
+      "source": "## Pregunta 6\n\nEscriba el c\u00f3digo equivalente a la siguiente consulta SQL.\n\n    SELECT \n        color \n    FROM \n        u \n    WHERE \n        color NOT LIKE 'b%';"
+    },
+    {
+      "cell_type": "code",
+      "grade": true,
+      "test": false,
+      "execution_count": 9,
+      "points": 5,
+      "source": null,
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "(green)\n(green)\n(orange)\n(viole)\n(red)\n(indigo)\n(indigo)\n(green)\n(gray)\n(red)\n(orange)\n(green)\n(yellow)\n"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "grade": false,
+      "source": "## Pregunta 7\n\nEscriba el c\u00f3digo equivalente a la siguiente consulta SQL.\n\n    SELECT \n        firstname,\n        color\n    FROM \n        u \n    WHERE color = 'blue' AND firstname LIKE 'Z%';"
+    },
+    {
+      "cell_type": "code",
+      "grade": true,
+      "test": false,
+      "execution_count": 10,
+      "points": 5,
+      "source": null,
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "(Zoe,blue)\n"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "grade": false,
+      "source": "## Pregunta 8\n\nEscriba el c\u00f3digo equivalente a la siguiente consulta SQL.\n\n    SELECT\n        firstname,\n        color\n    FROM \n        u\n    WHERE color = 'blue' OR firstname LIKE 'K%';"
+    },
+    {
+      "cell_type": "code",
+      "grade": true,
+      "test": false,
+      "execution_count": 11,
+      "points": 5,
+      "source": null,
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "(Karen,green)\n(Zoe,blue)\n(Driscoll,blue)\n(Karyn,red)\n(Kylan,black)\n(Hope,blue)\n"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "grade": false,
+      "source": "## Pregunta 9\n\nEscriba el c\u00f3digo equivalente a la siguiente consulta SQL.\n\n    SELECT \n        firstname, color \n    FROM \n        u\n    WHERE color IN ('blue','black');"
+    },
+    {
+      "cell_type": "code",
+      "grade": true,
+      "test": false,
+      "execution_count": 12,
+      "points": 5,
+      "source": null,
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "(Roth,black)\n(Zoe,blue)\n(Driscoll,blue)\n(Kylan,black)\n(Hope,blue)\n"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "grade": false,
+      "source": "## Pregunta 10\n\nEscriba el c\u00f3digo equivalente a la siguiente consulta SQL.\n\n    SELECT \n        firstname, \n        color \n    FROM \n        u \n    WHERE color NOT IN ('blue','black');"
+    },
+    {
+      "cell_type": "code",
+      "grade": true,
+      "test": false,
+      "execution_count": 13,
+      "points": 5,
+      "source": null,
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "(Vivian,green)\n(Karen,green)\n(Cody,orange)\n(Gretchen,viole)\n(Karyn,red)\n(Merritt,indigo)\n(Jordan,indigo)\n(Hope,green)\n(Vivian,gray)\n(Clio,red)\n(Ayanna,orange)\n(Chanda,green)\n(Chadwick,yellow)\n"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "grade": false,
+      "source": "## Pregunta 11\n\nEscriba el c\u00f3digo equivalente a la siguiente consulta SQL.\n\n    SELECT\n        firstname,\n        color\n    FROM \n        u \n    WHERE \n        color REGEXP '^b';"
+    },
+    {
+      "cell_type": "code",
+      "grade": true,
+      "test": false,
+      "execution_count": 14,
+      "points": 5,
+      "source": null,
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "(Roth,black)\n(Zoe,blue)\n(Driscoll,blue)\n(Kylan,black)\n(Hope,blue)\n"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "grade": false,
+      "source": "## Pregunta 12\n\nEscriba el c\u00f3digo equivalente a la siguiente consulta SQL.\n\n    SELECT\n        firstname,\n        color\n    FROM \n        u \n    WHERE \n        color REGEXP '^[^b]';"
+    },
+    {
+      "cell_type": "code",
+      "grade": true,
+      "test": false,
+      "execution_count": 15,
+      "points": 5,
+      "source": null,
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "(Vivian,green)\n(Karen,green)\n(Cody,orange)\n(Gretchen,viole)\n(Karyn,red)\n(Merritt,indigo)\n(Jordan,indigo)\n(Hope,green)\n(Vivian,gray)\n(Clio,red)\n(Ayanna,orange)\n(Chanda,green)\n(Chadwick,yellow)\n"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "grade": false,
+      "source": "## Pregunta 13\n\nEscriba el c\u00f3digo equivalente a la siguiente consulta SQL.\n\n    SELECT \n        firstname,\n        color\n    FROM \n        u\n    WHERE \n        color REGEXP 'blue|green';"
+    },
+    {
+      "cell_type": "code",
+      "grade": true,
+      "test": false,
+      "execution_count": 16,
+      "points": 5,
+      "source": null,
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "(Vivian,green)\n(Karen,green)\n(Zoe,blue)\n(Driscoll,blue)\n(Hope,green)\n(Hope,blue)\n(Chanda,green)\n"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "grade": false,
+      "source": "## Pregunta 14\n\nEscriba el c\u00f3digo equivalente a la siguiente consulta SQL.\n\n    SELECT \n        firstname,\n        color\n    FROM \n        u\n    WHERE \n        color REGEXP '.n';"
+    },
+    {
+      "cell_type": "code",
+      "grade": true,
+      "test": false,
+      "execution_count": 17,
+      "points": 5,
+      "source": null,
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "(Vivian,green)\n(Karen,green)\n(Hope,green)\n(Chanda,green)\n"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "grade": false,
+      "source": "## Pregunta 15\n\nEscriba el c\u00f3digo equivalente a la siguiente consulta SQL.\n\n    SELECT \n        firstname,\n        color \n    FROM \n        u \n    WHERE \n        color REGEXP '[aeiou]$';"
+    },
+    {
+      "cell_type": "code",
+      "grade": true,
+      "test": false,
+      "execution_count": 18,
+      "points": 5,
+      "source": null,
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "(Cody,orange)\n(Zoe,blue)\n(Gretchen,viole)\n(Driscoll,blue)\n(Merritt,indigo)\n(Jordan,indigo)\n(Hope,blue)\n(Ayanna,orange)\n"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "grade": false,
+      "source": "## Pregunta 16\n\nEscriba el c\u00f3digo equivalente a la siguiente consulta SQL.\n\n    SELECT \n        REGEX_EXTRACT(birthday, '....-..-..', 2) \n    FROM \n        u;"
+    },
+    {
+      "cell_type": "code",
+      "grade": true,
+      "test": false,
+      "execution_count": 19,
+      "points": 5,
+      "source": null,
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "(07)\n(05)\n(04)\n(01)\n(07)\n(10)\n(10)\n(02)\n(10)\n(02)\n(12)\n(12)\n(08)\n(12)\n(07)\n(02)\n(04)\n(04)\n"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "grade": false,
+      "source": "## Pregunta 17\n\nEscriba el c\u00f3digo equivalente a la siguiente consulta SQL.\n\n    SELECT  \n        firstname,\n        SUBSTRING_INDEX(firstname, 'a', 1)\n    FROM \n        u;"
+    },
+    {
+      "cell_type": "code",
+      "grade": true,
+      "test": false,
+      "execution_count": 20,
+      "points": 5,
+      "source": null,
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "(4)\n(1)\n(-1)\n(-1)\n(-1)\n(-1)\n(-1)\n(1)\n(-1)\n(3)\n(4)\n(-1)\n(4)\n(-1)\n(-1)\n(2)\n(2)\n(2)\n"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "grade": false,
+      "source": "## Pregunta 18\n\nEscriba el c\u00f3digo equivalente a la siguiente consulta SQL.\n\n    SELECT \n        firstname \n    FROM \n        u \n    WHERE \n        SUBSTRING(firstname, 0, 1) >= 'm';"
+    },
+    {
+      "cell_type": "code",
+      "grade": true,
+      "test": false,
+      "execution_count": 21,
+      "points": 5,
+      "source": null,
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "(Vivian)\n(Roth)\n(Zoe)\n(Merritt)\n(Vivian)\n"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "grade": false,
+      "source": "## Pregunta 19\n\nEscriba el c\u00f3digo equivalente a la siguiente consulta SQL.\n\n    SELECT \n        firstname, \n        LOCATE('ia', firstname) \n    FROM \n        u;"
+    },
+    {
+      "cell_type": "code",
+      "grade": true,
+      "test": false,
+      "execution_count": 22,
+      "points": 5,
+      "source": null,
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "(3)\n(-1)\n(-1)\n(-1)\n(-1)\n(-1)\n(-1)\n(-1)\n(-1)\n(-1)\n(-1)\n(-1)\n(3)\n(-1)\n(-1)\n(-1)\n(-1)\n(-1)\n"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "grade": false,
+      "source": "## Pregunta 20\n\nEscriba el c\u00f3digo en Pig para manipulaci\u00f3n de fechas que genere sea equivalente a la siguiente consulta SQL.\n\n    SELECT \n        birthday, \n        DATE_FORMAT(birthday, \"yyyy\"),\n        DATE_FORMAT(birthday, \"yy\"),\n    FROM \n        persons\n    LIMIT\n        5;"
+    },
+    {
+      "cell_type": "code",
+      "grade": true,
+      "test": false,
+      "execution_count": 23,
+      "points": 5,
+      "source": null,
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "(1971,71)\n(1974,74)\n(1973,73)\n(1975,75)\n(1974,74)\n(1974,74)\n(1970,70)\n(1969,69)\n(1974,74)\n(1975,75)\n(1969,69)\n(1973,73)\n(1970,70)\n(1972,72)\n(1970,70)\n(1974,74)\n(1973,73)\n(1973,73)\n"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "grade": false,
+      "source": "## Pregunta 21\n\nEscriba el c\u00f3digo en Pig para manipulaci\u00f3n de fechas que genere la siguiente salida.\n\n    (1971-07-08,jul,07,7)\n    (1974-05-23,may,05,5)\n    (1973-04-22,abr,04,4)\n    (1975-01-29,ene,01,1)\n    (1974-07-03,jul,07,7)\n    (1974-10-18,oct,10,10)\n    (1970-10-05,oct,10,10)\n    (1969-02-24,feb,02,2)\n    (1974-10-17,oct,10,10)\n    (1975-02-28,feb,02,2)\n    (1969-12-07,dic,12,12)\n    (1973-12-24,dic,12,12)\n    (1970-08-27,ago,08,8)\n    (1972-12-12,dic,12,12)\n    (1970-07-01,jul,07,7)\n    (1974-02-11,feb,02,2)\n    (1973-04-01,abr,04,4)\n    (1973-04-29,abr,04,4)"
+    },
+    {
+      "cell_type": "code",
+      "grade": true,
+      "test": false,
+      "execution_count": 24,
+      "points": 5,
+      "source": null,
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "(1971-07-08,jul,07,7)\n(1974-05-23,may,05,5)\n(1973-04-22,abr,04,4)\n(1975-01-29,ene,01,1)\n(1974-07-03,jul,07,7)\n(1974-10-18,oct,10,10)\n(1970-10-05,oct,10,10)\n(1969-02-24,feb,02,2)\n(1974-10-17,oct,10,10)\n(1975-02-28,feb,02,2)\n(1969-12-07,dic,12,12)\n(1973-12-24,dic,12,12)\n(1970-08-27,ago,08,8)\n(1972-12-12,dic,12,12)\n(1970-07-01,jul,07,7)\n(1974-02-11,feb,02,2)\n(1973-04-01,abr,04,4)\n(1973-04-29,abr,04,4)\n"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "grade": false,
+      "source": "## Pregunta 22\n\nEscriba el c\u00f3digo en Pig para manipulaci\u00f3n de fechas que genere la siguiente salida:\n\n    (1971-07-08,08,8,jue,jueves)\n    (1974-05-23,23,23,jue,jueves)\n    (1973-04-22,22,22,dom,domingo)\n    (1975-01-29,29,29,mi\u00e9,mi\u00e9rcoles)\n    (1974-07-03,03,3,mi\u00e9,mi\u00e9rcoles)\n    (1974-10-18,18,18,vie,viernes)\n    (1970-10-05,05,5,lun,lunes)\n    (1969-02-24,24,24,lun,lunes)\n    (1974-10-17,17,17,jue,jueves)\n    (1975-02-28,28,28,vie,viernes)\n    (1969-12-07,07,7,dom,domingo)\n    (1973-12-24,24,24,lun,lunes)\n    (1970-08-27,27,27,jue,jueves)\n    (1972-12-12,12,12,mar,martes)\n    (1970-07-01,01,1,mi\u00e9,mi\u00e9rcoles)\n    (1974-02-11,11,11,lun,lunes)\n    (1973-04-01,01,1,dom,domingo)\n    (1973-04-29,29,29,dom,domingo)"
+    },
+    {
+      "cell_type": "code",
+      "grade": true,
+      "test": false,
+      "execution_count": 25,
+      "points": 5,
+      "source": null,
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "(1971-07-08,08,8,jue,jueves)\n(1974-05-23,23,23,jue,jueves)\n(1973-04-22,22,22,dom,domingo)\n(1975-01-29,29,29,mi\u00e9,mi\u00e9rcoles)\n(1974-07-03,03,3,mi\u00e9,mi\u00e9rcoles)\n(1974-10-18,18,18,vie,viernes)\n(1970-10-05,05,5,lun,lunes)\n(1969-02-24,24,24,lun,lunes)\n(1974-10-17,17,17,jue,jueves)\n(1975-02-28,28,28,vie,viernes)\n(1969-12-07,07,7,dom,domingo)\n(1973-12-24,24,24,lun,lunes)\n(1970-08-27,27,27,jue,jueves)\n(1972-12-12,12,12,mar,martes)\n(1970-07-01,01,1,mi\u00e9,mi\u00e9rcoles)\n(1974-02-11,11,11,lun,lunes)\n(1973-04-01,01,1,dom,domingo)\n(1973-04-29,29,29,dom,domingo)\n"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "grade": false,
+      "source": "## Pregunta 23\n\nCuente la cantidad de personas nacidas por a\u00f1o."
+    },
+    {
+      "cell_type": "code",
+      "grade": true,
+      "test": false,
+      "execution_count": 26,
+      "points": 5,
+      "source": null,
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "(1969,2)\n(1970,3)\n(1971,1)\n(1972,1)\n(1973,4)\n(1974,5)\n(1975,2)\n"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "grade": false,
+      "source": "---"
+    },
+    {
+      "cell_type": "code",
+      "grade": false,
+      "source": "!rm pig_* data.csv"
+    },
+    {
+      "cell_type": "markdown",
+      "grade": false,
+      "source": "---"
+    }
+  ]
+}
